@@ -1,5 +1,7 @@
 ---
-- name: Update all packages
-  ansible.builtin.dnf:
-    name: "*"
-    state: latest
+- hosts: all
+  tasks:
+  - name: Update all packages
+    ansible.builtin.dnf:
+      name: "*"
+      state: latest
