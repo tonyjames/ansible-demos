@@ -14,3 +14,7 @@
       state: present
       activationkey: Demo
       org_id: Default_Organization
+  - name: Install katello-agent
+    dnf:
+      name: katello-agent
+      state: latest
