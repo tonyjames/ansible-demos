@@ -1,0 +1,15 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+  - name: Configure system to connect to Satellite instead of RHSM
+    ansible.builtin.package:
+      name: http://{{satellite_fqdn}}/pub/katello-ca-consumer-latest.noarch.rpm
+      state: latest
+    vars:
+      - satellite_fqdn: satellite.tonyjames.lab
+  - name: Register to Satellite using an activation key
+    community.general.redhat_subscription:
+      state: present
+      activationkey: Demo
+      org_id: Default_Organization
