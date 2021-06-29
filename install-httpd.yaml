@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+  - name: Install httpd package
+    ansible.builtin.package:
+      name: httpd
+      state: latest
+  - name: Start httpd service
+    ansible.builtin.service:
+      name: httpd
+      state: started
+      enabled: yes
